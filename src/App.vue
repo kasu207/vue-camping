@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
-</template>
 
+  <v-app>
+      <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+      <Nav/>
+      <v-main>
+        <v-container>
+          <router-view></router-view>
+        </v-container>
+        <div>
+            <v-btn
+                elevation="2"
+                fab
+                dark
+                fixed
+                right
+                bottom
+                color="cyan"
+                v-bind:to="'/locations/new'"
+            >
+                <v-icon dark>mdi-plus</v-icon>
+            </v-btn>
+        </div>
+      </v-main>
+  </v-app>
+</template>
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Nav from '../src/components/Nav/Nav'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    components:{
+      Nav,
+    },
+    data () {
+      return {
+      }
+    },
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.basemap {
+  width: 100%;
+  height: 100%;
 }
 </style>
